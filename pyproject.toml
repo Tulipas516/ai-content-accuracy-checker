@@ -3,7 +3,7 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ai-content-starter"
+name = "ai-content-accuracy-checker"
 version = "0.1.0"
 description = "LLM Accuracy Checker using src/ layout and console scripts"
 readme = "README.md"
@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [project.urls]
-homepage = "https://github.com/tmorales2000/ai-content-starter"
+homepage = "https://github.com/tmorales2000/ai-content-accuracy-checker"
 
 [project.scripts]
 accchk-build-index = "accchk.cli:build_index_main"
